@@ -2,6 +2,10 @@
 #include "csr.h"
 #include <riscv/asm_macros.S>
 
+#define mxstatus 0x7c0
+#define mhcr 0x7c1
+#define mcor 0x7c2
+
   .option norvc
   .section .text.init,"ax",@progbits
   .globl bl2_entrypoint
@@ -77,9 +81,15 @@ bl2_entrypoint_real:
   csrc mcor, x3
   li x3, 0x12
   csrs mcor, x3
+#if 1
   # enable D-cache
   li x3, 0x2
   csrs mhcr, x3
+#else
+  # disable D-cache
+  li x3, 0x2
+  csrc mhcr, x3
+#endif
 
   la sp, __STACKS_END__
 
@@ -108,4 +118,3 @@ stacks:
   .skip RISCV_PGSIZE
 
   .section .rodata
-

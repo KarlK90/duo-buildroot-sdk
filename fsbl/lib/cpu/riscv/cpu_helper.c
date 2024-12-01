@@ -11,8 +11,8 @@
 void sync_cache(void)
 {
 	asm volatile(
-			"icache.iall\n"
-			"sync.i\n"
+			"th.icache.iall\n"
+			"th.sync.i\n"
 			:
 			:
 			: "memory");
