@@ -337,27 +337,27 @@ function build_all()
 {
   # build bsp
   build_uboot || return $?
-  build_kernel || return $?
-  build_osdrv || return $?
-  build_middleware || return $?
-  pack_access_guard_turnkey_app || return $?
-  pack_ipc_turnkey_app || return $?
-  pack_boot || return $?
-  pack_cfg || return $?
-  pack_rootfs || return $?
-  pack_data
-  pack_system || return $?
-  copy_tools
-  pack_upgrade
+  # build_kernel || return $?
+  # build_osdrv || return $?
+  # build_middleware || return $?
+  # pack_access_guard_turnkey_app || return $?
+  # pack_ipc_turnkey_app || return $?
+  # pack_boot || return $?
+  # pack_cfg || return $?
+  # pack_rootfs || return $?
+  # pack_data
+  # pack_system || return $?
+  # copy_tools
+  # pack_upgrade
 }
 
 function clean_all()
 {
   clean_uboot
-  clean_kernel
-  clean_ramdisk
-  clean_osdrv
-  clean_middleware
+  # clean_kernel
+  # clean_ramdisk
+  # clean_osdrv
+  # clean_middleware
 }
 
 # shellcheck disable=SC2120
@@ -496,8 +496,10 @@ function cvi_setup_env()
   export CROSS_COMPILE_UCLIBC=arm-cvitek-linux-uclibcgnueabihf-
   export CROSS_COMPILE_64_NONOS=aarch64-elf-
   export CROSS_COMPILE_64_NONOS_RISCV64=riscv64-unknown-elf-
+  # export CROSS_COMPILE_GLIBC_RISCV64=riscv64-unknown-linux-gnu-
+  # export CROSS_COMPILE_MUSL_RISCV64=riscv64-unknown-linux-musl-
   export CROSS_COMPILE_GLIBC_RISCV64=riscv64-unknown-linux-gnu-
-  export CROSS_COMPILE_MUSL_RISCV64=riscv64-unknown-linux-musl-
+  export CROSS_COMPILE_MUSL_RISCV64=riscv64-buildroot-linux-musl-
   export CROSS_COMPILE="$CROSS_COMPILE_64"
 
   # toolchain path
@@ -506,8 +508,10 @@ function cvi_setup_env()
   CROSS_COMPILE_PATH_UCLIBC="$TOOLCHAIN_PATH"/gcc/arm-cvitek-linux-uclibcgnueabihf
   CROSS_COMPILE_PATH_64_NONOS="$TOOLCHAIN_PATH"/gcc/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-elf
   CROSS_COMPILE_PATH_64_NONOS_RISCV64="$TOOLCHAIN_PATH"/gcc/riscv64-elf-x86_64
-  CROSS_COMPILE_PATH_GLIBC_RISCV64="$TOOLCHAIN_PATH"/gcc/riscv64-linux-x86_64
-  CROSS_COMPILE_PATH_MUSL_RISCV64="$TOOLCHAIN_PATH"/gcc/riscv64-linux-musl-x86_64
+  # CROSS_COMPILE_PATH_GLIBC_RISCV64="$TOOLCHAIN_PATH"/gcc/riscv64-linux-x86_64
+  # CROSS_COMPILE_PATH_MUSL_RISCV64="$TOOLCHAIN_PATH"/gcc/riscv64-linux-musl-x86_64
+  CROSS_COMPILE_PATH_GLIBC_RISCV64="/home/karlk/x-tools/riscv64-unknown-linux-gnu/"
+  CROSS_COMPILE_PATH_MUSL_RISCV64="/home/karlk/x-tools/riscv64-lp64d-musl/"
   CROSS_COMPILE_PATH="$CROSS_COMPILE_PATH_64"
 
   # add toolchain path

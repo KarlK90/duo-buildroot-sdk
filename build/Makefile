@@ -215,8 +215,8 @@ u-boot-env-tools:
 u-boot-clean: export KBUILD_OUTPUT=${UBOOT_PATH}/${UBOOT_OUTPUT_FOLDER}
 u-boot-clean:
 	$(call print_target)
-	${Q}$(MAKE) -j${NPROC} -C ${UBOOT_PATH} distclean
-	${Q}rm -f ${OUTPUT_DIR}/fip.bin ${UBOOT_PATH}/${UBOOT_OUTPUT_FOLDER}/u-boot.bin.lzma
+#	${Q}$(MAKE) -j${NPROC} -C ${UBOOT_PATH} distclean
+#	${Q}rm -f ${OUTPUT_DIR}/fip.bin ${UBOOT_PATH}/${UBOOT_OUTPUT_FOLDER}/u-boot.bin.lzma
 
 
 ################################################################################

@@ -125,7 +125,7 @@ function milkv_build()
 	  rm -rf ${OUTPUT_DIR}/*
   fi
    
-  clean_all
+  # clean_all
   build_all
   if [ $? -eq 0 ]; then
     print_info "Build board ${MILKV_BOARD} success!"
@@ -266,4 +266,4 @@ prepare_env
 build_info
 
 milkv_build
-milkv_pack
+# milkv_pack
